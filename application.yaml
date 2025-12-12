@@ -1,0 +1,16 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: bulky-microservice-app
+spec:
+  components:
+    - name: application-manifests
+      type: k8s-objects
+      properties:
+        # Reference a remote Git repository containing the manifests
+        uri: "https://github.com/ALMCybage/kubeVelaPOC.git"
+        # Optional: Specify a subdirectory or branch
+        revision: "main"
+        paths:
+          - "k8s/configmap.yaml"
+          - "k8s/namespace.yaml"

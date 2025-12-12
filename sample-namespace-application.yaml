@@ -1,0 +1,20 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  # The name of your KubeVela Application
+  name: create-my-namespace-app
+spec:
+  components:
+    - name: new-namespace-component
+      # Use the k8s-objects component type to deploy raw Kubernetes resources
+      type: k8s-objects
+      properties:
+        objects:
+          # This is the actual Kubernetes Namespace YAML
+          - apiVersion: v1
+            kind: Namespace
+            metadata:
+              name: my-new-application-ns # <-- The name of the Namespace you want to create
+              labels:
+                env: staging
+                managed-by: kubevela
